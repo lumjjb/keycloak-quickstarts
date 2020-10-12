@@ -1,5 +1,5 @@
 {
-    "realm": "event-listener-sysout",
+    "realm": "client-auth-tsi",
     "enabled": true,
     "accessTokenLifespan": 60,
     "accessCodeLifespan": 60,

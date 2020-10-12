@@ -23,12 +23,16 @@
         <version>11.0.2</version>
     </parent>
 
-    <name>Keycloak Quickstart: Event Listener System.out</name>
+    <name>TSI Client Auth</name>
     <description/>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>event-listener-sysout</artifactId>
+    <artifactId>client-auth-tsi</artifactId>
     <packaging>jar</packaging>
+
+    <properties>
+        <pax.web.version>7.1.0</pax.web.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -46,6 +50,13 @@
             <artifactId>keycloak-server-spi</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-server-spi</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-server-spi-private</artifactId>
@@ -86,10 +97,28 @@
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
         </dependency>
+        <!-- added dependencies for clientauth -->
+        <!--
+         <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-wildfly-elytron-oidc-adapter</artifactId>
+            <version>${version.keycloak}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.web</groupId>
+            <artifactId>pax-web-api</artifactId>
+            <version>${pax.web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak.protocol.oidc</groupId>
+            <artifactId>keycloak-protocol-oidc</artifactId>
+            <version>${version.keycloak}</version>
+        </dependency>
+        -->
     </dependencies>
 
     <build>
-        <finalName>event-listener-sysout</finalName>
+        <finalName>client-auth-tsi</finalName>
 
         <plugins>
             <plugin>
@@ -130,8 +159,8 @@
                         </goals>
                         <configuration>
                             <commands>
-                                <command>if (outcome != success) of /subsystem=keycloak-server/spi=eventsListener:add</command>
-                                <command>    /subsystem=keycloak-server/spi=eventsListener/provider=sysout:add(enabled=true)</command>
+                                <command>if (outcome != success) of /subsystem=keycloak-server/spi=client-authenticator:add</command>
+                                <command>    /subsystem=keycloak-server/spi=client-authenticator/provider=tsi:add(enabled=true)</command>
                                 <command>end-if</command>
 
                                 <command>reload</command>

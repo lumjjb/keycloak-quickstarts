@@ -312,6 +312,7 @@
                 <module>user-storage-simple</module>
                 <module>user-storage-jpa</module>
                 <module>event-listener-sysout</module>
+                <module>client-auth-tsi-</module>
                 <module>event-store-mem</module>
                 <module>service-springboot-rest</module>
                 <module>app-springboot</module>

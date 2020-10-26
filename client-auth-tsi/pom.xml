@@ -50,11 +50,10 @@
             <artifactId>keycloak-server-spi</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-server-spi</artifactId>
-            <scope>provided</scope>
+            <artifactId>keycloak-services</artifactId>
+            <version>${version.keycloak}</version>
         </dependency>
 
         <dependency>
